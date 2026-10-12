@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SEEKERS CLUB</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+</head>
+<body>
+    <div class="wing wing-left"></div>
+    <div class="wing wing-right"></div>
+
+    <main class="console">
+        <header class="masthead">
+            <p class="eyebrow">AERIAL RECON DIVISION // ACCESS GRANTED</p>
+            <h1>SEEKERS <span>CLUB</span></h1>
+            <p class="tagline">Air superiority. Total recall. Identify any member of the fleet.</p>
+        </header>
+
+        <form>
+            <label for="first">FIRST NAME</label>
+            <input type="text" id="first" placeholder="INPUT FIRST NAME"> <br><br>
+
+            <label for="surname">LAST NAME</label>
+            <input type="text" id="surname" placeholder="INPUT LAST NAME"> <br><br>
+
+            <input type="button" py-click="name_finder" value="SEARCH">
+        </form>
+
+        <div class="result-label">// TRANSMISSION RESULT</div>
+        <div id="result"></div>
+    </main>
+
+    <script type="py" src="main.py"></script>
+</body>
+</html>

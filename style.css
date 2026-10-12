@@ -1,0 +1,179 @@
+/* ===== SEEKERS CLUB — aerial command console theme ===== */
+
+:root {
+    --bg: #07060d;
+    --panel: #12101f;
+    --steel: #2a2740;
+    --violet: #8b3dff;
+    --violet-glow: #b57bff;
+    --red: #ff2a3d;
+    --text: #e6e2f5;
+    --muted: #8d87a8;
+}
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+    margin: 0;
+    padding: 48px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: "Rajdhani", "Segoe UI", sans-serif;
+    font-weight: 500;
+    color: var(--text);
+    background:
+        radial-gradient(ellipse at 50% -10%, rgba(139, 61, 255, 0.35), transparent 60%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 4px),
+        var(--bg);
+    overflow-x: hidden;
+}
+
+/* ---- swept-wing background shapes ---- */
+.wing {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 28vw;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(139,61,255,0.18), rgba(255,42,61,0.08));
+    opacity: 0.8;
+}
+.wing-left  { left: 0;  clip-path: polygon(0 0, 100% 0, 0 70%); }
+.wing-right { right: 0; clip-path: polygon(0 0, 100% 0, 100% 70%); }
+
+/* ---- main console panel ---- */
+.console {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 520px;
+    padding: 36px 32px 32px;
+    background: linear-gradient(160deg, #181430, var(--panel));
+    border: 1px solid var(--steel);
+    clip-path: polygon(0 0, calc(100% - 38px) 0, 100% 38px, 100% 100%, 38px 100%, 0 calc(100% - 38px));
+    box-shadow: 0 0 60px rgba(139, 61, 255, 0.25);
+}
+.console::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--violet), var(--red));
+}
+
+/* ---- header ---- */
+.masthead { text-align: center; margin-bottom: 28px; }
+
+.eyebrow {
+    margin: 0 0 6px;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: var(--red);
+}
+
+h1 {
+    margin: 0;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 8vw, 3rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-shadow: 0 0 18px rgba(181, 123, 255, 0.6);
+}
+h1 span { color: var(--violet-glow); }
+
+.tagline {
+    margin: 10px 0 0;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+}
+
+/* ---- form ---- */
+form { display: block; }
+
+form br { display: none; }  /* spacing handled by CSS instead of <br> */
+
+label {
+    display: block;
+    margin: 0 0 6px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--violet-glow);
+}
+
+input[type="text"] {
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 14px 16px;
+    font: inherit;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    background: rgba(7, 6, 13, 0.8);
+    border: 1px solid var(--steel);
+    border-left: 4px solid var(--violet);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+input[type="text"]::placeholder { color: #5b5675; }
+input[type="text"]:focus {
+    border-color: var(--violet-glow);
+    box-shadow: 0 0 16px rgba(139, 61, 255, 0.5);
+}
+
+input[type="button"] {
+    width: 100%;
+    padding: 16px;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.35em;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    background: linear-gradient(90deg, var(--violet), var(--red));
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%);
+    transition: filter 0.2s, transform 0.1s;
+}
+input[type="button"]:hover  { filter: brightness(1.25) drop-shadow(0 0 10px var(--red)); }
+input[type="button"]:active { transform: scale(0.98); }
+
+/* ---- result ---- */
+.result-label {
+    margin: 28px 0 8px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+}
+
+#result {
+    min-height: 64px;
+    padding: 16px 18px;
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    background: rgba(7, 6, 13, 0.7);
+    border: 1px solid var(--steel);
+    border-left: 4px solid var(--red);
+    word-break: break-word;
+}
+#result:empty::before {
+    content: "AWAITING INPUT...";
+    color: #5b5675;
+    animation: blink 1.4s steps(2, start) infinite;
+}
+
+@keyframes blink { to { visibility: hidden; } }
+
+/* ---- small screens ---- */
+@media (max-width: 480px) {
+    body { padding: 24px 12px; }
+    .console { padding: 28px 20px 24px; }
+}
